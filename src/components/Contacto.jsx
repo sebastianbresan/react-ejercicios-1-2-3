@@ -16,31 +16,26 @@ class Contacto extends Component {
         <h2>Last Name: {this.props.lastName}</h2>
         <h3>Email: {this.props.email}</h3>
         <h4>Status: {this.state.status ? "Disconnected" : "Connected"}</h4>
-        <button onClick= {this.changeStatus}> Change Status </button> 
+        <button onClick={this.changeStatus}> Change Status </button>
       </div>
     );
-    }
-  changeStatus = () => {
-   if(this.state.status === false){
-     this.setState(()=>({
-       status: true
-     }))
-   }
-   else{
-    this.setState(()=>({
-      status: false
-    }))
   }
-  }
+
+
+  changeStatus = () => !this.state.status ? 
+  this.setState(() => ({
+    status: true,
+  })) : 
+  this.setState(() => ({
+    status: false,
+  }))
+
 }
-  
-  
 
 Contacto.propTypes = {
   name: PropTypes.string,
   lastName: PropTypes.string,
   email: PropTypes.string,
 };
-
 
 export default Contacto;
